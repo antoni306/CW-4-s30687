@@ -1,3 +1,5 @@
+using System.Security.Cryptography.X509Certificates;
+
 namespace Tutorial3Tests;
 
 public class AdvancedEmpDeptTests
@@ -9,8 +11,8 @@ public class AdvancedEmpDeptTests
     {
         var emps = Database.GetEmps();
 
-        decimal? maxSalary = null; 
-
+        decimal? maxSalary = null;
+        maxSalary = emps.Max(p => p.Sal);
         Assert.Equal(5000, maxSalary);
     }
 
