@@ -59,9 +59,9 @@ public class AdvancedEmpDeptTests
     {
         var emps = Database.GetEmps();
 
-        // var withMgr = null; 
-        //
-        // Assert.All(withMgr, e => Assert.NotNull(e.Mgr));
+        var withMgr = emps.Select(p=>p).Where(p=>p.Mgr.HasValue); 
+        
+        Assert.All(withMgr, e => Assert.NotNull(e.Mgr));
     }
 
     // 16. All employees earn more than 500
