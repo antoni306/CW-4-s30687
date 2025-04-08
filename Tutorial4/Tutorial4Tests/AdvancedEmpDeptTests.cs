@@ -11,8 +11,7 @@ public class AdvancedEmpDeptTests
     {
         var emps = Database.GetEmps();
 
-        decimal? maxSalary = null;
-        maxSalary = emps.Max(p => p.Sal);
+        decimal? maxSalary = emps.Max(p => p.Sal);
         Assert.Equal(5000, maxSalary);
     }
 
@@ -23,8 +22,7 @@ public class AdvancedEmpDeptTests
     {
         var emps = Database.GetEmps();
 
-        decimal? minSalary = null;
-        minSalary = emps.Where(p=>p.DeptNo==30).Min(p => p.Sal);
+        decimal? minSalary  = emps.Where(p=>p.DeptNo==30).Min(p => p.Sal);
         Assert.Equal(1250, minSalary);
     }
 
@@ -35,10 +33,10 @@ public class AdvancedEmpDeptTests
     {
         var emps = Database.GetEmps();
 
-        // var firstTwo = null; 
-        //
-        // Assert.Equal(2, firstTwo.Count);
-        // Assert.True(firstTwo[0].HireDate <= firstTwo[1].HireDate);
+        var firstTwo = emps.Select(p=>p).OrderBy(p=>p.HireDate).Take(2).ToList(); 
+        
+        Assert.Equal(2, firstTwo.Count);
+        Assert.True(firstTwo[0].HireDate <= firstTwo[1].HireDate);
     }
 
     // 14. DISTINCT job titles
